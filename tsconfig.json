@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "module": "esnext"
+  },
+  "skipLibCheck": true,
+  "include": [
+    "lib",
+    "./core-commerce-reference-store/src",
+    "./core-commerce-reference-store/src/*",
+    "packages/apps/core-commerce-reference-store/src",
+    "./packages/apps/core-commerce-reference-store/src",
+    "./packages/apps/core-commerce-reference-store/src/*"
+  ]
+}

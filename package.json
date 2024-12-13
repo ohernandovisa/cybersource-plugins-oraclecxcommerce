@@ -1,0 +1,115 @@
+{
+  "name": "isv-occ-payment",
+  "version": "24.1.2",
+  "description": "ISV Oracle Commerce Cloud Payment Plugin",
+  "main": "index.js",
+  "repository": "git@github.com:CyberSource/cybersource-plugins-oraclecxcommerce.git",
+  "author": "ISV Payments",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "build": "lerna run build --stream",
+    "build:prod": "lerna run build:prod",
+    "ci": "run-s lint:ci test:ci",
+    "clean": "lerna run clean --stream",
+    "eslint": "eslint .",
+    "eslint:fix": "eslint --fix .",
+    "format": "prettier --write packages/**/*.{js,jsx,ts,tsx}",
+    "lint": "yarn lint:cmd --fix",
+    "lint:ci": "yarn lint:cmd -o ./html-reports/lint-report.html -f html",
+    "lint:cmd": "eslint . --ext '.ts,.tsx,.json,.js' --cache",
+    "occ": "node ./bin/index.js",
+    "perf": "jest -i -c jest.config.perf.js",
+    "perf:debug": "node --inspect-brk node_modules/jest/bin/jest.js -i -c jest.config.perf.js",
+    "perf:lighthouse": "jest -i -c jest.config.perf.lighthouse.js",
+    "perf:wpt": "jest -i -c jest.config.perf.wpt.js",
+    "prettier:fix": "prettier --config .prettierrc.js --write \"{packages,qa}/**/*.js\"",
+    "start:mock-server": "yarn workspace @isv-occ-payment/occ-mock-server start",
+    "start:server": "yarn workspace @isv-occ-payment/occ-sse-gateway start",
+    "start:server-watch": "yarn workspace @isv-occ-payment/occ-sse-gateway start:watch",
+    "stylelint": "stylelint **/*.css --ignore-disables",
+    "test": "jest -c jest.config.js",
+    "test:api": "jest -c jest.config.api.js",
+    "test:api:debug": "node --inspect-brk node_modules/jest/bin/jest.js -i -c jest.config.api.js",
+    "test:ci": "yarn test --ci",
+    "test:coverage:int": "lerna run test:coverage:int",
+    "test:coverage:unit": "lerna run test:coverage:unit",
+    "test:debug": "node --inspect-brk node_modules/jest/bin/jest.js -i -c jest.config.js",
+    "test:int": "lerna run test:int --stream",
+    "test:int:debug": "node --inspect-brk node_modules/jest/bin/jest.js -i -c jest.config.int.js",
+    "test:unit": "lerna run test:unit --stream",
+    "tsc": "tsc -p ./tsconfig.json",
+    "start-sse": "yarn workspace @isv-occ-payment/server-extension start:watch --inspect"
+  },
+  "dependencies": {
+    "@popperjs/core": "^2.11.6",
+
+    "tsc-alias": "^1.7.1"
+  },
+  "devDependencies": {
+    "@ts-tools/node": "^5.0.2",
+    "@types/compression": "^1.7.2",
+    "@types/crypto-js": "^4.1.1",
+    "@types/googlepay": "^0.7.3",
+    "@types/jest": "^29.2.3",
+    "@types/node": "^20.8.9",
+    "@types/node-fetch": "^2.6.2",
+    "@types/supertest": "^2.0.12",
+    "@typescript-eslint/eslint-plugin": "^6.9.1",
+    "@typescript-eslint/parser": "^6.9.1",
+    "JSONStream": "^1.3.5",
+    "archiver": "^6.0.1",
+    "commander": "^11.1.0",
+    "eslint": "^8.27.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jest": "^27.1.5",
+    "eslint-plugin-json": "^3.1.0",
+    "eslint-plugin-jsx-a11y": "^6.6.1",
+    "eslint-plugin-markdown": "^3.0.0",
+    "eslint-plugin-no-only-tests": "^3.1.0",
+    "eslint-plugin-prettier": "^5.0.1",
+    "eslint-plugin-react": "7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-spellcheck": "0.0.20",
+    "eslint-plugin-unicorn": "49.0.0",
+    "fs-extra": "^11.1.1",
+    "husky": "^8.0.2",
+    "jest": "^29.3.1",
+    "jest-html-reporters": "^3.0.11",
+    "jest-mock-extended": "^3.0.1",
+    "jszip": "^3.10.1",
+    "lerna": "^7.4.2",
+    "lint-staged": "^15.0.2",
+    "mkdirp": "^3.0.1",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^3.0.3",
+    "rimraf": "^5.0.5",
+    "supertest": "^6.3.1",
+    "symlink-dir": "^5.0.1",
+    "ts-jest": "^29.0.3",
+    "tsconfig-paths": "^4.1.0",
+    "typescript": "~5.2.2",
+    "yauzl": "^2.10.0"
+  },  
+  "resolutions": {
+    "@types/node": "20.8.9"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "browser": {
+    "crypto": false,
+    "stream": false
+  },
+  "lint-staged": {
+    "*.{js,ts,tsx}": [
+      "eslint --fix"
+    ]
+  },
+  "workspaces": [
+    "packages/**"
+  ]
+}
